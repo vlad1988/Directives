@@ -72,6 +72,11 @@ app.controller('DirectiveCtrl', ['$scope',function($scope){
 app.directive('myDirective', function () {
 return{
     restrict: 'E',
-    templateUrl: 'my-derective.html'
+    templateUrl: 'my-derective.html',
+    controller: function($scope){
+        $scope.showMessage = function(name){
+            console.log(name);
+        };
+    }
 };
 });
