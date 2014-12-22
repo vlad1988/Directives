@@ -4,13 +4,28 @@
         <title>Pagination</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+        <link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+        <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+        <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>    </head>
     <body>
         <div>Pagination</div>
 
-        <div>
+
+        <div ng-controller="PaginateCtrl">
+            <form name="form"> 
+                <input type="text" ng-model="search" ng-change="filter()" placeholder="Search"/><br/>
+                <br/>
+                <ul>
+                    <li ng-repeat="data in filtered = (list| filter:search) | startFrom:(currentPage - 1) * entryLimit | limitTo:entryLimit">{{data.name}}</li>
+                </ul>
+                <pagination data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></pagination>
+            </form>
+            
+            <h4>Пример директивы</h4>
         </div>
-        <script src='bower_components/angular/angular.min.js'></script>
+        <div ng-controller="DirectiveCtrl">
+            <my-directive></my-directive>
+        </div>
         <script src='script.js'></script>   
 
     </body>
