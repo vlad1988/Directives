@@ -26,6 +26,11 @@
         <div ng-controller="DirectiveCtrl">
             <my-directive></my-directive>
         </div>
+        
+        <div ng-controller="SelectCtrl" >
+            <h4>Пример ng-change</h4>
+            <select ng-model="score" ng-change = "getScoreData(score)" ng-options="score as score.name for score in  scores"></select>
+        </div>
         <script src='script.js'></script>   
 
     </body>

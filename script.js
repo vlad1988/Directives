@@ -58,25 +58,34 @@ app.controller("PaginateCtrl", ['$scope', function ($scope) {
                 $scope.noOfPages = Math.ceil($scope.filtered.length / $scope.entryLimit);
             }, 10);
         };
-        
-        
+
+
 
     }]);
 
-app.controller('DirectiveCtrl', ['$scope',function($scope){
-    $scope.user = {
-        login: 'userTest',
-        mail: 'user@mail.ru'
-    };
-}]);
-app.directive('myDirective', function () {
-return{
-    restrict: 'E',
-    templateUrl: 'my-derective.html',
-    controller: function($scope){
-        $scope.showMessage = function(name){
-            console.log(name);
+app.controller('DirectiveCtrl', ['$scope', function ($scope) {
+        $scope.user = {
+            login: 'userTest',
+            mail: 'user@mail.ru'
         };
-    }
-};
+    }]);
+
+app.controller('SelectCtrl', ['$scope', function ($scope) {
+        $scope.getScoreData = function(score){console.log(score.name);};
+        $scope.scores = [
+            {name: 'Область 1', id: '1'},
+            {name: 'Область 2', id: '2'}
+        ];
+    }]);
+
+app.directive('myDirective', function () {
+    return{
+        restrict: 'E',
+        templateUrl: 'my-derective.html',
+        controller: function ($scope) {
+            $scope.showMessage = function (name) {
+                console.log(name);
+            };
+        }
+    };
 });
